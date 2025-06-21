@@ -11,4 +11,12 @@ scriptwriter_agent = LlmAgent(
     output_key="generated_script",  # Save result to state
 )
 
-root_agent = scriptwriter_agent
+visualizer_agent = LlmAgent(
+    name="ShortsVisualizer",
+    model="gemini-2.0-flash-001",
+    instruction=load_instruction_from_file("visualizer_instruction.txt"),
+    description="Generates visual concepts based on a provided script.",
+    output_key="visual_concepts",  # Save result to state
+)
+
+root_agent = visualizer_agent
